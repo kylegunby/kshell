@@ -10,9 +10,9 @@ void kshell_loop() {
     do {
         printf("%s", prompt);
         // Read the input from the user
-        kshell_read_ln(input);
+        input = kshell_read_ln();
     
-        printf("input: %s\n", input);
+        printf("Echo: %s\n\n", input);
         // Parse the input
         // kshell_parse();
 
@@ -31,11 +31,12 @@ void kshell_init() {
     printf("Initializing the shell...\n\n");
 }
 
-void kshell_read_ln(char *input) {
+char *kshell_read_ln() {
     // Read user input and store it in a buffer
+    int buffer_size = INPUT_BUFFER_SIZE;
     int buffer_position = 0;
     int c;
-    char *buffer = malloc(sizeof(char) * INPUT_BUFFER_SIZE);
+    char *buffer = malloc(sizeof(char) * buffer_size);
     
     if (!buffer) {
         perror("calloc");
@@ -47,16 +48,24 @@ void kshell_read_ln(char *input) {
 
         if (c == EOF || c == '\n') {
             buffer[buffer_position] = '\0';
-            break;
+            return buffer;
         }
 
+        
         buffer[buffer_position] = c;
         buffer_position++;
+
+        if (buffer_position >= buffer_size) {
+            buffer_size += INPUT_BUFFER_SIZE;
+            buffer = realloc(buffer, buffer_size);
+            
+            if (!buffer) {
+                perror("realloc");
+                exit(EXIT_FAILURE);
+            }
+        }
     }
 
-    // TODO: Handle buffer overflow vuln be dynamically resizing buffer
-
-    input = buffer;
 }
 
 void kshell_parse();

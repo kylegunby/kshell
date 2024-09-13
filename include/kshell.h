@@ -8,7 +8,7 @@
 
 void kshell_loop();
 void kshell_init();
-void kshell_read_ln(char *input);
+char *kshell_read_ln();
 void kshell_parse();
 void kshell_exec();
 void kshell_cleanup();
