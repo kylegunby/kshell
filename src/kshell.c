@@ -17,7 +17,6 @@ void kshell_loop() {
         input = kshell_read_ln();
         args = kshell_parse(input);
         status = kshell_exec(args);
-       // status = kshell_start_process(args);
     } while (1);
     
 }
@@ -147,7 +146,7 @@ int kshell_exec(char **args) {
     }
 
     for (int i = 0; i < kshell_number_of_builtins(); i++) {
-        if (strcmp(args[1], kshell_builtin_names[i]) == 0)
+        if (strcmp(args[0], kshell_builtin_names[i]) == 0)
             return (*kshell_builtin_functions[i])(args);
     }
 
