@@ -7,7 +7,7 @@
 
 void kshell_loop();
 void kshell_init();
-char *kshell_read_ln();
+char *kshell_read_input();
 char **kshell_parse(char *line);
 int kshell_start_process(char **args);
 int kshell_exec(char **args);

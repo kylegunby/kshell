@@ -14,7 +14,7 @@ void kshell_loop() {
 
     do {
         printf("kshell> ");
-        input = kshell_read_ln();
+        input = kshell_read_input();
         args = kshell_parse(input);
         status = kshell_exec(args);
     } while (1);
@@ -30,7 +30,7 @@ void kshell_init() {
     //printf("Initializing the shell...\n\n");
 }
 
-char *kshell_read_ln() {
+char *kshell_read_input() {
     // Read user input and store it in a buffer
     int buffer_size = INPUT_BUFFER_SIZE;
     int buffer_position = 0;
