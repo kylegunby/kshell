@@ -17,3 +17,9 @@ $(TARGET): $(OBJ)
 obj/%.o: src/%.c
 	gcc -c $< -o $@ -Iinclude
 
+build:
+	docker build -t kshell .
+
+start:
+	docker run -it kshell
+

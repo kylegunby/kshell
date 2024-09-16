@@ -124,6 +124,7 @@ int kshell_start_process(char **args) {
     } else if (pid < 0) {
         // Error forking the parent process
         perror("fork");
+        exit(EXIT_FAILURE);
     } else {
         // This is where the parent process is executed
         do {
