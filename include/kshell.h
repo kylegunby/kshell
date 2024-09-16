@@ -1,15 +1,16 @@
 #ifndef KSHELL_H
 #define KSHELL_H
 
-#define EXIT_SUCCESS 0
-#define EXIT_FAILURE 1
-
 #define INPUT_BUFFER_SIZE 1024
+#define TOKEN_BUFFER_SIZE 64
+#define TOKEN_DELIMETER " \t\r\n\a"
 
 void kshell_loop();
 void kshell_init();
 char *kshell_read_ln();
-void kshell_parse();
-void kshell_exec();
+char **kshell_parse(char *line);
+int kshell_start_process(char **args);
+int kshell_exec(char **args);
 void kshell_cleanup();
+
 #endif

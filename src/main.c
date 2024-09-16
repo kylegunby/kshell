@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "kshell.h"
 
 int main() {
