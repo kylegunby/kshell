@@ -15,7 +15,6 @@
         - [ ] print error messages
         - [ ] exit with error code
     - [ ] Signal handling
-        - [ ] handle SIGINT
     - [ ] history
         - [ ] store history
         - [ ] recall history

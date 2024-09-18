@@ -13,7 +13,7 @@ void kshell_loop() {
     int status;
 
     do {
-        printf("kshell> ");
+        print_prompt();
         input = kshell_read_input();
         args = kshell_parse(input);
         status = kshell_exec(args);
@@ -21,13 +21,10 @@ void kshell_loop() {
     
 }
 
-void kshell_init() {
-    // Initialize the shell
-    // As of now, this function does nothing
-    // In the future, this function will
-    // initialize the shell using a
-    // configuration file
-    //printf("Initializing the shell...\n\n");
+void kshell_init() {}
+
+void print_prompt() {
+    printf(DEFAULT_PROMPT);
 }
 
 char *kshell_read_input() {

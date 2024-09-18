@@ -1,5 +1,5 @@
 #include "builtins.h"
-
+#include <stdlib.h>
 
 char *kshell_builtin_names[] = {
     "cd",
@@ -44,6 +44,6 @@ int kshell_help(char **args) {
 }
 
 int kshell_exit(char **args) {
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
